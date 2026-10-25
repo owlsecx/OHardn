@@ -18,7 +18,7 @@
 
 ## 📌 Overview
 
-Linux host hardening auditor (CIS-style sysctl, users, sudo, filesystem, services)
+OHardn — Linux Host Hardening Auditor. It provides kernel / sysctl auditor — live /proc/sys values vs persisted /etc/sysctl.conf + sysctl.d drop-ins, drift detection, recommended values per key. Operators can export results (including machine-readable formats) and gate CI with severity thresholds where supported.
 
 ---
 
@@ -30,10 +30,6 @@ Linux host hardening auditor (CIS-style sysctl, users, sudo, filesystem, service
 - Filesystem auditor — world-writable dirs outside tmp, SUID / SGID inventory with known-risky (GTFOBins- style) binaries, /tmp sticky bit, critical file permissions (/etc/passwd, shadow, group, gshadow)
 - Services & timers — enabled systemd units with an allowlist; flags legacy / risky daemons
 - Network exposure summary — listening TCP/UDP via ss, netstat or /proc/net fallback
-- Weighted 0–100 score, A–F grade, per-category subscores and remediation text per finding
-- Baseline snapshots (JSON) + regression diff
-- Export TXT / MD / JSON / CSV with save chooser, clipboard copy, --suggest sysctl snippet writer
-- Full CLI mode (--all, --sysctl, --json, --fail-on)
 
 ---
 
@@ -47,7 +43,9 @@ Linux host hardening auditor (CIS-style sysctl, users, sudo, filesystem, service
 ## 🚀 Usage
 
 ```bash
-./OHardn
+./OHardn                                     # interactive menu
+./OHardn --json -o report.json
+./OHardn --help
 ```
 
 ---
